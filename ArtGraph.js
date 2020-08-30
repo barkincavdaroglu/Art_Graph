@@ -1,4 +1,3 @@
-//var json = require('./prettified.json');
 const fs = require('fs'), JSONStream = require('JSONStream');
 
 class Vertex {
@@ -112,33 +111,7 @@ parser.on('data', function (obj) {
         }
     }
     addEdges()
-    console.log(artGraph)
 });
-
-
-async function insertVertices(obj) {
-    for (var each in obj) {
-        if (obj[each]["culture"] !== "") {
-            var vert = new Vertex(obj[each]["objectID"], obj[each]["culture"], obj[each]["objectDate"], obj[each]["classification"])
-            //console.log(vert)
-            artGraph.insertVertex(vert)
-        }
-    }
-}
-
-//var data = JSON.parse(fs.readFileSync('./ArtObj.json'));
-
-
-
-
-// for (var each in json) {
-//     if (json[each]["Culture"] !== "") {
-//         var vert = new Vertex(json[each]["objectID"], json[each]["Culture"], json[each]["objectDate"], json[each]["Classification"])
-//         artGraph.insertVertex(vert)
-//     }
-// }
-//
-//
 
 async function addEdges() {
     for (var [id, vertex] of artGraph.vertices.entries()) {
@@ -155,19 +128,3 @@ async function addEdges() {
         }
     }
 }
-
-
-
-
-//console.log(artGraph.getCultures())
-// for (const [id, vertex] of artGraph.vertices.entries()) {
-//     result += vertex.adjacents.size
-//     //console.log(vertex.adjacents.size)
-//     //console.log("\n")
-// }
-
-//console.log(result)
-//console.log(artGraph.getByCulture("Venice"))
-//console.log(artGraph.getVertex("591826").adjacents)
-
-//console.log(artGraph.vertices.size)
